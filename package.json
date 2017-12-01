@@ -1,0 +1,9 @@
+{
+  "name": "vdcm-monitor",
+  "version": "0.0.0",
+  "description": "vdcm-monitor",
+  "main": "server.js",
+  "author": {
+    "name": "ckdang"
+  }
+}
