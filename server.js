@@ -16,7 +16,18 @@ app.use(function(err, req, res, next){
         res.status(500).send('Something bad happened!');
         });
 
-http.listen(port);
-console.log('Server running on http://%s:%s', ip, port);
 
-module.exports = app ;
+http.listen(port, ip, function () {
+    console.log("Server running @ http://" + ip + ":" + port);
+});
+
+io.on('connection', function (socket) { // Incoming connections from clients
+    // Greet the newcomer
+    socket.emit('hello', { greeting: 'Hi socket ' + socket.id + ' this is Server speaking! Let\'s play ping-pong. You pass!' });
+
+    socket.on('ping', function (data) { // ping-event from the client to be respond with pong
+        console.log("received ping from client: ", data);
+        socket.emit('pong', { id: data.id });
+    });
+});
+
