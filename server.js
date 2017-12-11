@@ -18,7 +18,9 @@ app.use(function(err, req, res, next){
 
 
 http.listen(port, ip, function () {
-    console.log("Server running @ http://" + ip + ":" + port);
+						console.log("Server running @ http://" + ip + ":" + port);
+						console.log('Socketio version: ' + require('socket.io/package').version);
+						console.log('expresss version:' + require('express/package').version);
 });
 
 io.on('connection', function (socket) { // Incoming connections from clients
